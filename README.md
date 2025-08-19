@@ -12,6 +12,8 @@ This scripts expects:
 
 There are alternatives see later.
 
+`*.*x` files are often easier to convert to completely different formats using tools like [Pandoc](https://github.com/jgm/pandoc), [markitdown](https://github.com/microsoft/markitdown), etc.
+
 ## Setup
 
 Read through https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies before proceeding!
