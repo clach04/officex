@@ -36,7 +36,9 @@ TODO
 
 ### Powerpoint
 
-TODO
+`.\SavePowerpointPptAsPptx.ps1`
+
+Original from https://dlairman.wordpress.com/2013/01/15/convert-ppt-to-pptx-using-powershell/
 
 ### Word
 
