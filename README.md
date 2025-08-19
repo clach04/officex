@@ -42,7 +42,16 @@ TODO
 
 `.\SaveWordDocAsDocx.ps1`
 
-From https://web.archive.org/web/20150508085022/http://blogs.technet.com/b/heyscriptingguy/archive/2010/06/22/hey-scripting-guy-how-can-i-use-windows-powershell-2-0-to-convert-doc-files-to-docx-files.aspx
+Original from https://web.archive.org/web/20150508085022/http://blogs.technet.com/b/heyscriptingguy/archive/2010/06/22/hey-scripting-guy-how-can-i-use-windows-powershell-2-0-to-convert-doc-files-to-docx-files.aspx
+
+
+Assuming setup complete, from PowerShell window issue:
+
+    .\SaveWordDocAsDocx.ps1
+
+Assuming .doc files to convert are in the current directory.
+
+WARNING docx files will be OVERWRITTEN!
 
 
 ## Alternatives
