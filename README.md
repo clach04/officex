@@ -39,6 +39,14 @@ TODO
 Original from https://gist.github.com/riskeez/096f3ee6bc23d35ed7730bbd36b33c44
 Also see original-original https://gist.github.com/gabceb/954418
 
+Assuming setup complete, from PowerShell window issue:
+
+    .\SavePowerpointPptAsPptx.ps1
+
+Assuming .xls files to convert are in the current directory.
+
+WARNING existing xlsx files will cause Excel to pause and prompt (NOTE dialog box might be hidden behind PowerShell Window).
+
 ### Powerpoint
 
 `.\SavePowerpointPptAsPptx.ps1`

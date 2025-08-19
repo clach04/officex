@@ -1,5 +1,5 @@
 # XLS to XLSX Batch convert script
-# Forked from https://gist.github.com/gabceb/954418 
+# Forked from https://gist.github.com/gabceb/954418
 # Works well using Office 365
 
 $folderpath = ".\"
@@ -23,15 +23,15 @@ ForEach-Object `
 	$workbook.saveas($path, $xlFixedFormat)
 	$workbook.close()
 	
-	$oldFolder = $path.substring(0, $path.lastIndexOf("\")) + "\old"
-	
-	write-host $oldFolder
-	if(-not (test-path $oldFolder))
-	{
-		new-item $oldFolder -type directory
-	}
-	
-	move-item $_.fullname $oldFolder	
+	#$oldFolder = $path.substring(0, $path.lastIndexOf("\")) + "\old"
+	#
+	#write-host $oldFolder
+	#if(-not (test-path $oldFolder))
+	#{
+	#	new-item $oldFolder -type directory
+	#}
+	#
+	#move-item $_.fullname $oldFolder
 }
 $excel.Quit()
 $excel = $null
