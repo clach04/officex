@@ -32,7 +32,8 @@ Read through https://learn.microsoft.com/en-us/powershell/module/microsoft.power
 
 ### Excel
 
-TODO
+TODO Consider adding as first line top of script, `Add-Type -AssemblyName Microsoft.Office.Interop.Excel`
+TODO Look at using `$excel.visible = $false`
 
 `.\ConvertXLS.ps1`
 
@@ -48,6 +49,8 @@ Assuming .xls files to convert are in the current directory.
 WARNING existing xlsx files will cause Excel to pause and prompt (NOTE dialog box might be hidden behind PowerShell Window).
 
 ### Powerpoint
+
+TODO Consider adding as first line top of script, `Add-Type -AssemblyName Microsoft.Office.Interop.PowerPoint`
 
 `.\SavePowerpointPptAsPptx.ps1`
 
