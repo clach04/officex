@@ -36,8 +36,8 @@ TODO
 
 `.\ConvertXLS.ps1`
 
-Original from https://gist.github.com/gabceb/954418
-Also see https://gist.github.com/riskeez/096f3ee6bc23d35ed7730bbd36b33c44
+Original from https://gist.github.com/riskeez/096f3ee6bc23d35ed7730bbd36b33c44
+Also see original-original https://gist.github.com/gabceb/954418
 
 ### Powerpoint
 

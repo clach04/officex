@@ -1,9 +1,16 @@
-$xlFixedFormat = [Microsoft.Office.Interop.Excel.XlFileFormat]::xlOpenXMLWorkbook
+# XLS to XLSX Batch convert script
+# Forked from https://gist.github.com/gabceb/954418 
+# Works well using Office 365
+
+$folderpath = ".\"
+$filetype ="*xls"
+
+Add-Type -AssemblyName Microsoft.Office.Interop.Excel
+
+$xlFixedFormat = [Microsoft.Office.Interop.Excel.XlFileFormat]::xlWorkbookDefault
 write-host $xlFixedFormat
 $excel = New-Object -ComObject excel.application
 $excel.visible = $true
-$folderpath = ".\"
-$filetype ="*xls"
 Get-ChildItem -Path $folderpath -Include $filetype -recurse | 
 ForEach-Object `
 {
@@ -24,8 +31,7 @@ ForEach-Object `
 		new-item $oldFolder -type directory
 	}
 	
-	move-item $_.fullname $oldFolder
-	
+	move-item $_.fullname $oldFolder	
 }
 $excel.Quit()
 $excel = $null
