@@ -40,6 +40,15 @@ TODO
 
 Original from https://dlairman.wordpress.com/2013/01/15/convert-ppt-to-pptx-using-powershell/
 
+Assuming setup complete, from PowerShell window issue:
+
+    .\SavePowerpointPptAsPptx.ps1
+
+Assuming .ppt files to convert are in the current directory.
+
+WARNING pptx files will be OVERWRITTEN!
+
+
 ### Word
 
 `.\SaveWordDocAsDocx.ps1`
