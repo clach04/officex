@@ -117,5 +117,6 @@ w.Quit()
 Works cross platform, may not preserve formatting/display exactly.
 
     'soffice' + ' --headless --convert-to docx ' + in_filename + ' --outdir ' + out_path
+    `libreoffice --convert-to pptx:"Impress MS PowerPoint 2007 XML" *.ppt`
 
   * https://github.com/Done-1026/doc2docx/blob/master/divide_doc.py
