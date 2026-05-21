@@ -90,10 +90,50 @@ WARNING docx files will be OVERWRITTEN!
 Python implementations also use COM.
 
 ```python
+import os
+import os.path
+
 import win32com
 
-w = win32com.gencache.EnsureDispatch("Word.Application")
+in_filename = sys.argv[1]  # 'c0n.doc'
+in_filename = os.path.abspath(in_filename)
+print(in_filename)
+
+# Source - https://stackoverflow.com/a/69288053
+# Posted by pelelter
+# Retrieved 2026-05-21, License - CC BY-SA 4.0
+
+#def dispatch(app_name:str):
+def dispatch(app_name):
+    try:
+        from win32com import client
+        app = client.gencache.EnsureDispatch(app_name)
+    except AttributeError:
+        # Workaround; AttributeError: module 'win32com' has no attribute 'gencache'
+        # Corner case dependencies.
+        import os
+        import re
+        import sys
+        import shutil
+        # Remove cache and try again.
+        MODULE_LIST = [m.__name__ for m in sys.modules.values()]
+        for module in MODULE_LIST:
+            if re.match(r'win32com\.gen_py\..+', module):
+                del sys.modules[module]
+        shutil.rmtree(os.path.join(os.environ.get('LOCALAPPDATA'), 'Temp', 'gen_py'))
+        from win32com import client
+        app = client.gencache.EnsureDispatch(app_name)
+    return app
+
+
+w = dispatch("Word.Application")  # win32com.gencache.EnsureDispatch("Word.Application")
+
 doc = w.Documents.Open(in_filename)  # ???????doc
+
+# Accept all tracked changes
+if doc.Revisions.Count >= 1:
+    doc.Revisions.AcceptAll()
+
 doc.SaveAs2(in_filename + "x", 12)  # I have no idea what the 12 literal constant is for...
 #doc.SaveAs(in_filename + "x"_path, 12, False, "", True, "", False, False, False, False)
 doc.Close()
