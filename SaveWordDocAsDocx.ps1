@@ -1,6 +1,7 @@
 [ref]$SaveFormat = "microsoft.office.interop.word.WdSaveFormat" -as [type]
 $word = New-Object -ComObject word.application
-$word.visible = $false
+$word.visible = $false  # Run in the background
+
 # folderpath is a list of source directories, comma seperated
 # Example:  $folderpath = "c:\fso\*", "c:\fso1\*"
 # .docx file(s) will go into the same directory as the source .doc file
