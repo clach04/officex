@@ -15,6 +15,12 @@ foreach-object `
     $path = ($_.fullname).substring(0,($_.FullName).lastindexOf("."))
     "Converting $path to $fileType ..."
     $doc = $word.documents.open($_.fullname)
+
+    # Accept all tracked changes
+    if ($doc.Revisions.Count -ge 1) {
+        $doc.Revisions.AcceptAll()
+    }
+
     $doc.saveas([ref] $path, [ref]$SaveFormat::wdFormatDocumentDefault)
     $doc.close()
 }
