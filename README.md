@@ -19,7 +19,7 @@ There are alternatives see later.
 Read through https://learn.microsoft.com/en-us/powershell/module/microsoft.powershell.core/about/about_execution_policies before proceeding!
 
  1. Open PowerShell
- 2. Sanity chech current policy:
+ 2. Sanity check current policy:
 
         Get-ExecutionPolicy -List
 
