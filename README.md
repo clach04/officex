@@ -80,7 +80,8 @@ Assuming setup complete, from PowerShell window issue:
 
 Assuming .doc files to convert are in the current directory.
 
-WARNING docx files will be OVERWRITTEN!
+WARNING 1: docx files will be OVERWRITTEN!
+WARNING 2: All Track Changes will be ACCEPTED!
 
 
 ## Alternatives
