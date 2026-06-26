@@ -2,13 +2,14 @@ import sys
 import zipfile
 
 
-def list_zip_entries(zf, prefix):
-    entries = [e for e in zf.infolist() if e.filename.startswith(prefix) and not e.filename.endswith('/')]
+def get_zip_entries(zf, prefix):
+    return [e for e in zf.infolist() if e.filename.startswith(prefix) and not e.filename.endswith('/')]
+
+
+def print_entries(entries):
     for e in entries:
         y, mo, d = e.date_time[0], e.date_time[1], e.date_time[2]
-        date_str = f"{y:04d}-{mo:02d}-{d:02d}"
-        print(f"  {e.file_size:>10d}  {date_str}  {e.filename}")
-    return entries
+        print(f"  {e.file_size:>10d}  {y:04d}-{mo:02d}-{d:02d}  {e.filename}")
 
 
 def main():
@@ -18,11 +19,15 @@ def main():
 
     path = sys.argv[1]
     with zipfile.ZipFile(path) as zf:
-        print("Attachments (word/embeddings/):")
-        attachments = list_zip_entries(zf, "word/embeddings/")
+        attachments = get_zip_entries(zf, "word/embeddings/")
+        if attachments:
+            print("Attachments (word/embeddings/):")
+            print_entries(attachments)
 
-        print("Media (word/media/):")
-        list_zip_entries(zf, "word/media/")
+        media = get_zip_entries(zf, "word/media/")
+        if media:
+            print("Media (word/media/):")
+            print_entries(media)
 
     if attachments:
         print("WARNING: this document contains embedded attachments.")
