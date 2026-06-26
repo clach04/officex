@@ -18,8 +18,8 @@ def inspect(path):
         attachments = get_zip_entries(zf, "word/embeddings/")
         media = get_zip_entries(zf, "word/media/")
 
+    print(path)
     if attachments or media:
-        print(path)
         if attachments:
             print("  Attachments (word/embeddings/):")
             print_entries(attachments)
