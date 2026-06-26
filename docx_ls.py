@@ -1,3 +1,4 @@
+import glob
 import sys
 import zipfile
 
@@ -12,25 +13,41 @@ def print_entries(entries):
         print(f"  {e.file_size:>10d}  {y:04d}-{mo:02d}-{d:02d}  {e.filename}")
 
 
-def main():
-    if len(sys.argv) < 2:
-        print(f"Usage: {sys.argv[0]} <file.docx>", file=sys.stderr)
-        sys.exit(1)
-
-    path = sys.argv[1]
+def inspect(path):
     with zipfile.ZipFile(path) as zf:
         attachments = get_zip_entries(zf, "word/embeddings/")
-        if attachments:
-            print("Attachments (word/embeddings/):")
-            print_entries(attachments)
-
         media = get_zip_entries(zf, "word/media/")
+
+    if attachments or media:
+        print(path)
+        if attachments:
+            print("  Attachments (word/embeddings/):")
+            print_entries(attachments)
         if media:
-            print("Media (word/media/):")
+            print("  Media (word/media/):")
             print_entries(media)
 
-    if attachments:
-        print("WARNING: this document contains embedded attachments.")
+    return attachments
+
+
+def main():
+    if len(sys.argv) < 2:
+        print(f"Usage: {sys.argv[0]} <file.docx> [...]", file=sys.stderr)
+        sys.exit(1)
+
+    paths = []
+    for pattern in sys.argv[1:]:
+        expanded = glob.glob(pattern)
+        paths.extend(expanded if expanded else [pattern])
+
+    any_attachments = False
+    for path in paths:
+        attachments = inspect(path)
+        if attachments:
+            any_attachments = True
+
+    if any_attachments:
+        print("WARNING: one or more documents contain embedded attachments.")
 
 
 if __name__ == "__main__":
